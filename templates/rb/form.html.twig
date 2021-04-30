@@ -1,0 +1,61 @@
+{# /templates/gb/form.html.twig #}
+
+{% extends 'base.html.twig' %}
+{% block title %}
+    YOUR RECIPES
+{% endblock %}
+
+{% block body %}
+
+<div style=" background-color: lightpink; padding: 30px">
+
+    <h1>Your recipes</h1>
+    <p><a href="{{ path('rbListIngredients') }}"> << YOUR INGREDIENTS</a></p>
+    <table style="border: 1px black solid;margin-bottom: 20px" title="recipes">
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                Ingredients
+            </td>
+        </tr>
+        {% for recipe in recipes %}
+            <tr style="border: 1px black solid">
+                {% for item in recipe %}
+                    <td style="border: 1px black solid">
+                        {{ item }}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+    <form action="{{ path('rbSetRecipes') }}" method="post">
+        <table>
+            <tr>
+                <td>
+                    New recipe:
+                </td>
+                <td>
+                    <input type="text" name="entry_name" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Number of ingredients:
+                </td>
+                <td>
+                    <input type="number" name="entry_ingredient_number" style="width: 50px"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Add new recipe..." />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{% endblock %}

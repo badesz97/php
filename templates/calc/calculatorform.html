@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Calculator Form</title>
+</head>
+<body>
+    <form action="/calc/result" method="post">
+        <table border="1">
+            <tr><td>Operand one: </td>
+                <td><input type="text" name="operand1"></td></tr>
+            <tr><td>Operand two: </td>
+                <td><input type="text" name="operand2"></td></tr>
+            <tr><td>Operator: </td>
+                <td><select name="operator">
+                    <option value="+">ADD</option>
+                    <option value="-">SUB</option>
+                    <option value="*">MUL</option>
+                    <option value="/">DIV</option>
+                </select></td></tr>
+            <tr><td colspan="2">
+                <input type="submit" value="SEND THIS"></td></tr>
+        </table>
+    </form>
+</body>
+</html>

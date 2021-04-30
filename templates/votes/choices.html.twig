@@ -1,0 +1,27 @@
+{# @var form \Symfony\Component\Form\FormView #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Vote System
+{% endblock %}
+
+{% block body %}
+    <a href="{{ path('votesListQuestions') }}">BACK TO THE QUESTION LIST</a>
+    {# @var \App\Entity\Choices[] choices #}
+    {% for choice in choices %}
+        <p>
+            {{ choice.chText }} [NUMBER OF VOTES: {{ choice.chNumVotes }}] |
+            <a href="{{ path('votesVote', { 'choice': choice.chId } ) }}">[VOTE FOR THIS]</a>
+            <a href="{{ path('votesDeleteChoice', { 'choice': choice.chId } ) }}">[DELETE THIS]</a>
+        </p>
+    {% endfor %}
+
+    {% if form is not null and form is not empty %}
+        {% form_theme form 'form_table_layout.html.twig' %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    {% endif %}
+
+{% endblock %}

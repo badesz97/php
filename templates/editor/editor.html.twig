@@ -1,0 +1,32 @@
+{# DATA received: form, filetext, sessiontext #}
+{# @var filetext string #}
+{# @var sessiontext string #}
+{# @var form \Symfony\Component\Form\FormView #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    MY EDITOR
+{% endblock %}
+
+{% block body %}
+    {% if app.session.get('userName') is not empty %}
+        {% set userName = app.session.get('userName') %}
+        <p style="color: green;font-weight: bold">Logged in as {{ userName }}</p>
+        <hr/>
+        <p><a href="{{ path('forum_topiclist') }}"> JUMP TO FORUM </a> </p>
+    {% endif %}
+
+    {% if form is not null and form is not empty %}
+        {% form_theme form 'form_table_layout.html.twig' %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    {% endif %}
+
+    <hr/> FILE CONTENTS: <br/>
+    <p>{{ filetext|nl2br }}</p>
+    <hr/> SESSION CONTENTS: <br/>
+    <p>{{ sessiontext|nl2br }}</p>
+
+{% endblock %}

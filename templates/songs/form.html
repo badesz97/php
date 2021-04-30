@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Song's Vote</title>
+</head>
+<body>
+    <h1>Submit your vote!</h1>
+    <form action="/songs/vote" method="post">
+        <table>
+            <tr><td>Name: </td>
+                <td><input type="text" name="name"></td></tr>
+            <tr><td>Email address: </td>
+                <td><input type="text" name="email"></td></tr>
+            <tr><td>Favourite song: </td>
+                <td><select name="song">
+                    {{ OPTIONS }}
+            </select></td></tr>
+            <tr><td colspan="2">
+                <input type="submit" value="VOTE"></td></tr>
+        </table>
+    </form>
+</body>
+</html>

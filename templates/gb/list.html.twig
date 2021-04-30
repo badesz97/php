@@ -1,0 +1,22 @@
+{# templates/gb/list.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    MY GUESTBOOK
+{% endblock %}
+
+{% block body %}
+    <p><a href="{{ path('gbForm') }}">ADD NEW ENTRY</a></p>
+
+    {# entries[] => entry {name,email,text} #}
+    {% for entry in entries %}
+        <div style="border: 1px solid green">
+            <p>Name: {{ entry.name }}</p>
+            <p>Email: {{ entry.email }}</p>
+            <p>Text: {{ entry.text|nl2br }}</p>
+        </div>
+    {% endfor %}
+
+    {{ dump(entries) }}
+{% endblock %}

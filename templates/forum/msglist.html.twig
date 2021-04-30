@@ -1,0 +1,19 @@
+{# @var model \App\Model\MessageListModel #}
+
+{% extends 'forum/forumbase.html.twig' %}
+
+{% block forumcontent %}
+    <p><a href="{{ path('forum_topiclist') }}">BACK TO TOPIC LIST</a> </p>
+
+    {% for msg in model.messageList %}
+        <p><strong>{{ msg.userName }} at {{ msg.timestamp }}</strong></p>
+        <p>{{ msg.text }}</p>
+        <hr />
+    {% endfor %}
+
+    {% form_theme model.messageForm 'form_table_layout.html.twig' %}
+    {{ form_start(model.messageForm) }}
+    {{ form_widget(model.messageForm) }}
+    {{ form_end(model.messageForm) }}
+
+{% endblock %}

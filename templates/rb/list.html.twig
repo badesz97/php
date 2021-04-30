@@ -1,0 +1,41 @@
+{# /templates/gb/list.html.twig #}
+
+{% extends 'base.html.twig' %}
+{% block title %}
+    YOUR INGREDIENTS AND RECIPES
+{% endblock %}
+
+{% block body %}
+    <div style="background-color: darkseagreen; padding: 30px;">
+
+        <h1>Your ingredients</h1>
+        <p><a href="{{ path('rbRecipes') }}">YOUR RECIPES >></a></p>
+
+        <p>Ingredients:</p>
+        <ul title="ingredients">
+            {% for ingredient in ingredients %}
+                <li>
+                    {{ ingredient.name }}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <form action="{{ path('rbAddIngredient') }}" method="POST">
+            <tr>
+                <td>
+                    Ingredient:
+                </td>
+                <td>
+                    <input type="text" name="ingredient_name"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="submit" value="Add new ingredient" />
+                </td>
+            </tr>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{# /templates/gb/recipe.html.twig #}
+
+{% extends 'base.html.twig' %}
+{% block title %}
+    ADD RECIPE
+{% endblock %}
+{% block body %}
+    <form action="{{ path('rbAdd') }}" method="post">
+        <table>
+            <tr>
+                <td>
+                    Recipe:
+                </td>
+                <td>
+                    <input type="text" name="recipe_name" value={{ datas[0]["name"] }} />
+                </td>
+            </tr>
+            {% for data in  0..datas[0]["number"]-1 %}
+            <tr>
+                <td>
+                    <select name={{ "ingredient" ~ data }}>
+                        {% for ingredient in ingredients %}
+                            <option value="{{ ingredient.name }}" >{{ ingredient.name  }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <input type="number" name={{ "entry_num" ~ data }} />
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="SEND" />
+                </td>
+            </tr>
+        </table>
+    </form>
+
+{% endblock %}
